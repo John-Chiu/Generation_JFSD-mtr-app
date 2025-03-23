@@ -11,7 +11,7 @@ function createLinesBtns() {
     const lineObj = lines[lineCode];
     let lineEngName = lineObj.text;
     console.log(lineEngName);
-    const staArr = lineObj.sta;
+    const stationArr = lineObj.sta;
 
     // button for the line.
     let btn = document.createElement('button');
@@ -21,12 +21,12 @@ function createLinesBtns() {
     // onClick listener that fetch all next train data of each station of the line.
     btn.addEventListener('click', (event) => {
       console.log(`clicked ${lineEngName}`);
-      for (const staObj of staArr) {
-        let staKey = staObj.code;
-        let staName = staObj.name;
-        callAPI(lineCode, staKey)
+      for (const stationObj of stationArr) {
+        let stationCode = stationObj.code;
+        let stationName = stationObj.name;
+        callAPI(lineCode, stationCode)
           .then((res) => res.json())
-          .then((data) => console.log(`${staName}: `, data));
+          .then((data) => console.log(`${stationName}: `, data));
       }
     });
 
