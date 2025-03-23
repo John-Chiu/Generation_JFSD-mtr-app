@@ -2,27 +2,35 @@ import lines from './mtr_lines.js';
 
 console.log(lines);
 
+// create buttons for each line. Clicking the button will
+// fetch next train data of each station of the line.
 function createLinesBtns() {
   const btnContainer = document.getElementById('lines-btn-container');
-  for (const lineKey in lines) {
-    const lineObj = lines[lineKey];
+
+  for (const lineCode in lines) {
+    const lineObj = lines[lineCode];
     let lineEngName = lineObj.text;
     console.log(lineEngName);
     const staArr = lineObj.sta;
 
+    // button for the line.
     let btn = document.createElement('button');
     btn.innerText = lineEngName;
     // console.log(btn.innerText);
+
+    // onClick listener that fetch all next train data of each station of the line.
     btn.addEventListener('click', (event) => {
       console.log(`clicked ${lineEngName}`);
       for (const staObj of staArr) {
         let staKey = staObj.code;
         let staName = staObj.name;
-        callAPI(lineKey, staKey)
+        callAPI(lineCode, staKey)
           .then((res) => res.json())
           .then((data) => console.log(`${staName}: `, data));
       }
     });
+
+    // append button to the button container.
     btnContainer.append(btn);
   }
 }
