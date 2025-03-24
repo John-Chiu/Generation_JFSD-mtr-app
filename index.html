@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./script.js" type="module" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -14,11 +15,43 @@
 
     <!-- should be 2 lines here, up and down -->
     <div id="station-lines-container">
-        <!-- TODO put data got from station query into div -->
+        <!-- put data got from station query into div -->
         <!-- each station query we will get up and down, up go up div, down go down div.
             up with CSS flex: row, down with flex: column-reverse -->
-        <div id="line-up"></div>
-        <div id="line-down"></div>
+        <div id="line-up" class="line">
+            <div class="station-card">
+                <h4 class="station-name">Olympic</h4>
+                <p>next train</p>
+                <p>platform</p>
+            </div>
+            <div class="station-card">
+                <h4 class="station-name">Tsing Yi</h4>
+                <p>next train</p>
+                <p>platform</p>
+            </div>
+            <div class="station-card">
+                <h4 class="station-name">Sunny Bay</h4>
+                <p>next train</p>
+                <p>platform</p>
+            </div>
+        </div>
+        <div id="line-down" class="line">
+            <div class="station-card">
+                <h4 class="station-name">Olympic</h4>
+                <p>next train</p>
+                <p>platform</p>
+            </div>
+            <div class="station-card">
+                <h4 class="station-name">Tsing Yi</h4>
+                <p>next train</p>
+                <p>platform</p>
+            </div>
+            <div class="station-card">
+                <h4 class="station-name">Sunny Bay</h4>
+                <p>next train</p>
+                <p>platform</p>
+            </div>
+        </div>
     </div>
 </body>
 

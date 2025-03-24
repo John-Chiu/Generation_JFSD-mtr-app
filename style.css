@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#lines-btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* justify-content: space-between; */
+}
+
+#station-lines-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.station-card {
+    h4.station-name {
+        font-weight: bold;
+    }
+
+    p {
+        margin-top: 10px;
+    }
+
+    padding: 10px;
+    width: 180px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
