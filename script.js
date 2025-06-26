@@ -1,30 +1,27 @@
-import lines from './mtr_lines.js';
+import lines from "./mtr_lines.js";
 
-const LINE_UP = 'line-up';
-const LINE_DOWN = 'line-down';
+const LINE_UP = "line-up";
+const LINE_DOWN = "line-down";
 
 // console.log(lines);
 
 // create buttons for each line. Clicking the button will
 // fetch next train data of each station of the line.
 function createLinesBtns() {
-  const btnContainer = document.getElementById('lines-btn-container');
+  const btnContainer = document.getElementById("lines-btn-container");
 
   for (const lineCode in lines) {
     const lineObj = lines[lineCode];
-    let lineEngName = lineObj.text;
-    // console.log(lineEngName);
+    let lineChineseName = lineObj.text;
     const stationArr = lineObj.sta;
 
     // button for the line.
-    let btn = document.createElement('button');
-    btn.innerText = lineEngName;
+    let btn = document.createElement("button");
+    btn.innerText = lineChineseName;
     // console.log(btn.innerText);
 
     // onClick listener that fetch all next train data of each station of the line.
-    btn.addEventListener('click', (event) => {
-      // console.log(`clicked ${lineEngName}`);
-
+    btn.addEventListener("click", (event) => {
       let lineUp = document.getElementById(LINE_UP);
       let lineDown = document.getElementById(LINE_DOWN);
 
@@ -109,7 +106,7 @@ function putDataIntoCorrectPlace(data, lineCode, stationCode) {
     let divId = `${line}-${stationCode}`;
     let div = document.querySelector(`#${divId}`);
     if (!arr || !arr.length) {
-      div.style.visibility = 'hidden';
+      div.style.visibility = "hidden";
       return;
     }
     let elem = arr[0];
@@ -117,7 +114,7 @@ function putDataIntoCorrectPlace(data, lineCode, stationCode) {
     // console.log(`nextTrain: `, div);
 
     let nextTrain = div.childNodes[1];
-    nextTrain.textContent += elem.time.split(' ')[1];
+    nextTrain.textContent += elem.time.split(" ")[1];
 
     let plateform = div.childNodes[2];
     plateform.textContent += elem.plat;
@@ -126,23 +123,23 @@ function putDataIntoCorrectPlace(data, lineCode, stationCode) {
 
 function createCardsForLine(lineNode, stationArr) {
   stationArr.forEach((stationObj, idx) => {
-    let card = document.createElement('div');
+    let card = document.createElement("div");
     // console.log('lineNode.id:', lineNode.id);
     card.id = `${lineNode.id}-${stationObj.code}`;
     // console.log(`card.id: ${card.id}`);
 
     // card.id = `$`;
-    card.classList.add('station-card');
+    card.classList.add("station-card");
 
-    let title = document.createElement('h4');
-    title.classList.add('station-name');
+    let title = document.createElement("h4");
+    title.classList.add("station-name");
     title.innerText = stationObj.name;
 
-    let nextTrain = document.createElement('p');
-    nextTrain.innerText = '下班列車:';
+    let nextTrain = document.createElement("p");
+    nextTrain.innerText = "下班列車:";
 
-    let platform = document.createElement('p');
-    platform.innerText = '開出月台:';
+    let platform = document.createElement("p");
+    platform.innerText = "開出月台:";
 
     card.appendChild(title);
     card.appendChild(nextTrain);
@@ -151,7 +148,7 @@ function createCardsForLine(lineNode, stationArr) {
   });
 }
 
-async function callAPI(line, sta, lang = 'EN') {
+async function callAPI(line, sta, lang = "EN") {
   const url = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${sta}&lang=${lang}`;
   try {
     const response = await fetch(url);
