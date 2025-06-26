@@ -1,19 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
 }
 
 #lines-btn-container {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    /* justify-content: space-between; */
+    gap: 15px;
+    justify-content: space-evenly;
+
+    margin-top: 15px;
+    margin-bottom: 30px;
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        background-color: rgb(144, 45, 54);
+        color: white;
+        cursor: pointer;
+    }
 }
 
 #station-lines-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 50px;
 }
 
 .line {

@@ -29,6 +29,14 @@ function createLinesBtns() {
       lineUp.replaceChildren();
       lineDown.replaceChildren();
 
+      let uplineDirection = document.createElement("h2");
+      uplineDirection.innerHTML = `往${stationArr[stationArr.length - 1].name}`;
+      lineUp.append(uplineDirection);
+
+      let downlineDirection = document.createElement("h2");
+      downlineDirection.innerHTML = `往${stationArr[0].name}`;
+      lineDown.append(downlineDirection);
+
       // create all card
       createCardsForLine(lineUp, stationArr);
       createCardsForLine(lineDown, stationArr);

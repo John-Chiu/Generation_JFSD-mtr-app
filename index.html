@@ -10,45 +10,17 @@
 </head>
 
 <body>
-    <div id="lines-btn-container"></div>
+    <div id="app">
+        <div id="lines-btn-container"></div>
 
-    <!-- should be 2 lines here, up and down -->
-    <div id="station-lines-container">
-        <!-- put data got from station query into div -->
-        <!-- each station query we will get up and down, up go up div, down go down div.
-            up with CSS flex: row, down with flex: column-reverse -->
-        <div id="line-up" class="line">
-            <div class="station-card">
-                <h4 class="station-name">Olympic</h4>
-                <p>next train</p>
-                <p>platform</p>
+        <!-- should be 2 lines here, up and down -->
+        <div id="station-lines-container">
+            <!-- put data got from station query into div -->
+            <!-- each station query we will get up and down, up go up div, down go down div.
+                up with CSS flex: row, down with flex: column-reverse -->
+            <div id="line-up" class="line">
             </div>
-            <div class="station-card">
-                <h4 class="station-name">Tsing Yi</h4>
-                <p>next train</p>
-                <p>platform</p>
-            </div>
-            <div class="station-card">
-                <h4 class="station-name">Sunny Bay</h4>
-                <p>next train</p>
-                <p>platform</p>
-            </div>
-        </div>
-        <div id="line-down" class="line">
-            <div class="station-card">
-                <h4 class="station-name">Olympic</h4>
-                <p>next train</p>
-                <p>platform</p>
-            </div>
-            <div class="station-card">
-                <h4 class="station-name">Tsing Yi</h4>
-                <p>next train</p>
-                <p>platform</p>
-            </div>
-            <div class="station-card">
-                <h4 class="station-name">Sunny Bay</h4>
-                <p>next train</p>
-                <p>platform</p>
+            <div id="line-down" class="line">
             </div>
         </div>
     </div>
