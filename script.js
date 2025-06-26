@@ -53,18 +53,28 @@ function createLinesBtns() {
       //   lineUp.append(temp);
       // });
 
-      // send all request
+      // time to delay to fetch in order to avoid 429 Too Many Request
+      let delayInMs = 0;
+      // get next train ETA of all stations in that line
       for (const stationObj of stationArr) {
         let stationCode = stationObj.code;
         let stationName = stationObj.name;
 
-        callAPI(lineCode, stationCode)
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(`${stationName}: `, data);
-            if (data.status === 1)
-              putDataIntoCorrectPlace(data, lineCode, stationCode);
-          });
+        setTimeout(() => {
+          callAPI(lineCode, stationCode)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(`${stationName}: `, data);
+              if (data.status === 1)
+                putDataIntoCorrectPlace(data, lineCode, stationCode);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+        }, delayInMs);
+        // even delay 2000 ms, there still is a change to get 429 Too Many Request,
+        // 300ms would be great for better UX and avoding 429.
+        delayInMs += 300;
       }
     });
 
@@ -150,6 +160,8 @@ function createCardsForLine(lineNode, stationArr) {
 
 async function callAPI(line, sta, lang = "EN") {
   const url = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${sta}&lang=${lang}`;
+  console.log("fetching API", url);
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -159,7 +171,7 @@ async function callAPI(line, sta, lang = "EN") {
     // let data = await response.json();
     // console.log('data: ', data);
   } catch (error) {
-    console.error(error.message);
+    console.log(error.message);
   }
 }
 
